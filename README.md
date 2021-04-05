@@ -13,6 +13,7 @@ Table of Contents
 
 <a name="Overview"/>
 # Overview
+
 Scarfage2 is a backend API that manages user auth and access control, items (scarves), item tags, and user items collections.
 
 As the system is being built, this project will also provide rudimentary user interfaces that allow admins and moderators to view and review content.
@@ -51,6 +52,7 @@ not yet available
 
 <a name="RailsEnvironments"/>
 # Rails Environments
+
 Below is a description of the different rails environments in the Scarfage2 project.  To run in a specific rails environment, prepend your "rails" commands with "RAILS_ENV=env ", where "env" is the environment you intend to use.
 
 Examples:
@@ -68,6 +70,7 @@ The "test" environment is used to run our unit and functional tests (rspec) loca
 
 <a name="SetUp"/>
 # SetUp
+
 These are the steps you need to complete to get Scarfage2 running locally on your development machine. Theses steps assume MacOS, RVM, and MySQL are already set up.
 
 * clone this repo
@@ -91,3 +94,11 @@ Note: if your local MySQL root password is not 'password', you will need to edit
 
 
 <a name="RunningTests"/>
+# Running Tests
+
+Test suite uses Rspec, to runlocallay, type the command 'rspec'
+
+~~~
+$ rspec
+~~~
+
