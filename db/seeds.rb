@@ -15,9 +15,9 @@ DEV_USERS.each do |user|
   User.where(username: user[:username]).first_or_create!(user)
 end
 # clear all when new attriubutes are annotate_rendered_view_with_filenames
-# Item.all.destroy_all
+Item.all.destroy_all
 if Item.count == 0
-  path = File.join(File.dirname(__FILE__), "./seeds/scarf-seeds.json")
+  path = File.join(File.dirname(__FILE__), "./seeds/AllScarves.json")
   records = JSON.parse(File.read(path))
   records.each do |record|
     Item.where(id: record["uid"]).first_or_create!(
