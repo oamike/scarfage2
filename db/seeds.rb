@@ -14,13 +14,16 @@ DEV_USERS = [
 DEV_USERS.each do |user|
   User.where(username: user[:username]).first_or_create!(user)
 end
+
 # clear all when new attriubutes are annotate_rendered_view_with_filenames
 Item.all.destroy_all
 if Item.count == 0
   path = File.join(File.dirname(__FILE__), "./seeds/AllScarves.json")
   records = JSON.parse(File.read(path))
-  records.each do |record|
-    Item.where(id: record["uid"]).first_or_create!(
+  records.each_with_index do |record, item_index|
+    # limit to 10 items
+    break if item_index > 9
+    item = Item.where(id: record["uid"]).first_or_create!(
       id: record["uid"],
       name: record["name"],
       body: record["body"],
@@ -28,16 +31,22 @@ if Item.count == 0
       created_at: record["added"],
       updated_at: record["modified"]
     )
+    record["images"].each_with_index do |img_id, img_index|
+      name = case img_index
+      when 0
+        "Front"
+      when 1
+        "Back"
+      else
+        "Additonal"
+      end
+      Image.where(id: img_id).first_or_create!(
+        id: img_id,
+        name: name,
+        item_id: item.id,
+        status: :published
+      )
+    end
   end
-  puts "items are seeded"
+  puts "10 items are seeded"
 end
-# ITEMS = [
-#   {name: 'Scarf1', body: 'first scarf', description: 'first scarft in db'},
-#   {name: 'Scarf2', body: 'second scarf', description: 'second scarft in db'},
-#   {name: 'Scarf3', body: 'third scarf', description: 'third scarft in db'},
-#   {name: 'Scarf4', body: 'fourth scarf', description: 'fourth scarft in db'},
-#   {name: 'Scarf5', body: 'fifth scarf', description: 'fifth scarft in db'}
-# ]
-# ITEMS.each do |item|
-#   Item.where(name: item[:name]).first_or_create!(item)
-# end

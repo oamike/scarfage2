@@ -6,6 +6,18 @@
 </p>
 
 <p>
+  <table>
+    <tbody>
+      <% @item.images.each do |image| %>
+        <tr>
+          <td><%= item_image(image) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+<p>
   <strong>Body:</strong>
   <%= @item.body %>
 </p>
