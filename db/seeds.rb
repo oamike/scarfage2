@@ -20,9 +20,10 @@ Item.all.destroy_all
 if Item.count == 0
   path = File.join(File.dirname(__FILE__), "./seeds/AllScarves.json")
   records = JSON.parse(File.read(path))
+  num = 0
   records.each_with_index do |record, item_index|
     # limit to 10 items
-    break if item_index > 9
+    # break if item_index > 9
     item = Item.where(id: record["uid"]).first_or_create!(
       id: record["uid"],
       name: record["name"],
@@ -47,6 +48,7 @@ if Item.count == 0
         status: :published
       )
     end
+    num = item_index + 1
   end
-  puts "10 items are seeded"
+  puts "#{num} items are seeded"
 end
