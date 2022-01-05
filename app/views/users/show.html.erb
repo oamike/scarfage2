@@ -15,5 +15,44 @@
   <%= @user.role %>
 </p>
 
+<p>
+  <strong>Collection</strong>
+  <table>
+    <tbody>
+      <% @user.owned.each do |item| %>
+        <tr>
+          <td><%= user_item(item) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+<p>
+  <strong>WishList</strong>
+  <table>
+    <tbody>
+      <% @user.wish.each do |item| %>
+        <tr>
+          <td><%= user_item(item) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+<p>
+  <strong>TradeList</strong>
+  <table>
+    <tbody>
+      <% @user.trade.each do |item| %>
+        <tr>
+          <td><%= user_item(item) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -17,13 +17,14 @@ end
 
 # clear all when new attriubutes are annotate_rendered_view_with_filenames
 Item.all.destroy_all
+Image.all.destroy_all
 if Item.count == 0
   path = File.join(File.dirname(__FILE__), "./seeds/AllScarves.json")
   records = JSON.parse(File.read(path))
   num = 0
   records.each_with_index do |record, item_index|
     # limit to 10 items
-    # break if item_index > 9
+    break if item_index > 9
     item = Item.where(id: record["uid"]).first_or_create!(
       id: record["uid"],
       name: record["name"],
@@ -33,6 +34,7 @@ if Item.count == 0
       updated_at: record["modified"]
     )
     record["images"].each_with_index do |img_id, img_index|
+      # puts "Image #{img_id} index #{img_index}"
       name = case img_index
       when 0
         "Front"
@@ -43,6 +45,7 @@ if Item.count == 0
       end
       Image.where(id: img_id).first_or_create!(
         id: img_id,
+        user_id: 1, #force oamike at seeds
         name: name,
         item_id: item.id,
         status: :published
