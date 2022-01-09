@@ -1,32 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Items</h1>
+<h1>Scarves</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>My</th>
-      <th>Front</th>
-      <th>Back</th>
-      <th>Body</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.name %></td>
-        <td><%= item_attributes(item) %></td>
-        <td><%= image_render(item.images[0]&.image_url) %></td>
-        <td><%= image_render(item.images[1]&.image_url) %></td>
-        <td><%= item.body %></td>
-        <td><%= item.description %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <table>
+          <tr>
+            <td><%= link_to item.name, item %>  [<%= item_attributes(item) %>]</td>
+          </tr>
+          <tr>
+            <td>
+              <p><%= image_render(item.images[0]&.image_url) %></p>
+              <p><%= image_render(item.images[1]&.image_url) %></p>
+            </td>
+          </tr>
+      </table>
+
+
+          <% if false %>
+            <td>
+              <p><%= link_to 'Edit', edit_item_path(item) %></p>
+              <p><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+            </td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>

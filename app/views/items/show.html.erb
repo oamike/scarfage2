@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
+  <strong>Name</strong></p>
+<p>
+  <%= @item.name %>    [ <%= item_attributes(@item) %> ]</p>
 
 <p>
   <table>
@@ -18,14 +18,9 @@
 </p>
 
 <p>
-  <strong>Body:</strong>
-  <%= @item.body %>
-</p>
-
+  <strong>Description</strong></p>
 <p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
+  <%= @item.body %></p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
