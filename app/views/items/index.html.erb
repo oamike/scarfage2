@@ -20,8 +20,8 @@
       <tr>
         <td><%= item.name %></td>
         <td><%= item_attributes(item) %></td>
-        <td><%= item_image(item.images[0]) %></td>
-        <td><%= item_image(item.images[1]) %></td>
+        <td><%= image_render(item.images[0]&.image_url) %></td>
+        <td><%= image_render(item.images[1]&.image_url) %></td>
         <td><%= item.body %></td>
         <td><%= item.description %></td>
         <td><%= link_to 'Show', item %></td>

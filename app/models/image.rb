@@ -1,8 +1,9 @@
 class Image < ApplicationRecord
   belongs_to :item
 
-  #STATUS = [:new, :published, :hidden]
+  # STATUS = [:new, :published, :hidden]
+
   def image_url
-    "https://www.scarfage.com/image/#{id}/full"
+    "http://scarfdom.com/images/#{id}.jpg"
   end
 end

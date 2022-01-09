@@ -10,7 +10,7 @@
     <tbody>
       <% @item.images.each do |image| %>
         <tr>
-          <td><%= item_image(image) %></td>
+          <td><%= image_tag(image.image_url, alt: image.name, class: 'scarfimage') %></td>
         </tr>
       <% end %>
     </tbody>

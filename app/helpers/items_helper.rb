@@ -1,9 +1,6 @@
 module ItemsHelper
-  def item_image(image)
-    # image ? "<img src=#{image.image_url}/>".html_safe : ''
-    if image
-      "Image #{image.id} #{image.name}"
-    end
+  def image_render(image_url)
+    image_url ? image_tag(image_url, class: 'scarfimage') : ''
   end
 
   def item_attributes(item)
