@@ -15,6 +15,7 @@ DEV_USERS.each do |user|
   User.where(username: user[:username]).first_or_create!(user)
 end
 
+
 # clear all when new attriubutes are annotate_rendered_view_with_filenames
 Item.all.destroy_all
 Image.all.destroy_all

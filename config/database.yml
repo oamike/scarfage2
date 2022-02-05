@@ -19,14 +19,14 @@ default: &default
 
 development:
   <<: *default
-  database: scarfage2_development
+  database: scarfdom_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: scarfage2_test
+  database: scarfdom_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: scarfage2_production
-  username: scarfage2
-  password: <%= ENV['SCARFAGE2_DATABASE_PASSWORD'] %>
+  database: scarfdom_production
+  username: scardom
+  password: <%= ENV['SCARFDOM_DATABASE_PASSWORD'] %>

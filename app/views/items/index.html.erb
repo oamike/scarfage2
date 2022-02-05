@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Scarves</h1>
+<h1><%= link_to "Scarfdom", root_path %></h1>
 
 <table>
   <tbody>
@@ -8,7 +8,23 @@
       <tr>
         <table>
           <tr>
-            <td><%= link_to item.name, item %>  [<%= item_attributes(item) %>]</td>
+            <td>
+            <ul class="notification-badges" >
+              <%= link_to item.name, item, {class: "scarf-name"}   %>
+              <% if num_owned = own_count(item) %>
+                <li data-badge=<%= num_owned %> >own</li>
+              <% end %>
+              <% if trade = trade(item) %>
+                <li >trade</li>
+              <% end %>
+              <% if want = want(item) %>
+                <li>want</li>
+              <% end %>
+              <% if hide = hide(item) %>
+                <li>hide</li>
+              <% end %>
+            </ul>
+            </td>
           </tr>
           <tr>
             <td>

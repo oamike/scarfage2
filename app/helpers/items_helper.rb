@@ -14,4 +14,34 @@ module ItemsHelper
     end
     res
   end
+
+  def own_count(item)
+    att = @user_items.where(item_id: item.id).first
+    if att && att.own_count > 0
+      "#{att.own_count}"
+    else
+      nil
+    end
+  end
+
+    def trade(item)
+      att = @user_items.where(item_id: item.id).first
+      if att
+        att.willtrade ? "#{att.willtrade}" : nil
+      end
+    end
+
+    def want(item)
+      att = @user_items.where(item_id: item.id).first
+      if att
+        att.want ? "#{att.want}" : nil
+      end
+    end
+
+      def hide(item)
+        att = @user_items.where(item_id: item.id).first
+        if att
+          att.hidden ? "#{att.hidden}" : nil
+        end
+      end
 end

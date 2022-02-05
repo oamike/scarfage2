@@ -1,5 +1,17 @@
 <h1>Editing Item</h1>
 
+<p>
+  <table>
+    <tbody>
+      <% @item.images.each do |image| %>
+        <tr>
+          <td><%= image_tag(image.image_url, alt: image.name, class: 'scarfimage') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
 <%= render 'form', item: @item %>
 
 <%= link_to 'Show', @item %> |

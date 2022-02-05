@@ -1,11 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name</strong></p>
-<p>
-  <%= @item.name %>    [ <%= item_attributes(@item) %> ]</p>
+<h1><%= link_to "Scarfdom", root_path %></h1>
 
-<p>
+  <table class="item-header">
+    <tbody>
+    <tr>
+      <td>
+      <ul class="notification-badges" >
+        <span class="scarf-name" >
+          <%= @item.name    %>
+        </span>
+        <% if num_owned = own_count(@item) %>
+          <li data-badge=<%= num_owned %> >own</li>
+        <% end %>
+        <% if trade = trade(@item) %>
+          <li >trade</li>
+        <% end %>
+        <% if want = want(@item) %>
+          <li>want</li>
+        <% end %>
+        <% if hide = hide(@item) %>
+          <li>hide</li>
+        <% end %>
+        <li><%= link_to 'Edit', edit_item_path(@item), {class: "edit-button"} %></li>
+      </ul>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
   <table>
     <tbody>
       <% @item.images.each do |image| %>
@@ -15,12 +39,81 @@
       <% end %>
     </tbody>
   </table>
-</p>
 
 <p>
   <strong>Description</strong></p>
 <p>
   <%= @item.body %></p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+
+<p>
+  <strong>Tags</strong></p>
+
+<table>
+  <tbody>
+    <% unless @item.sport_list.empty? %>
+    <tr>
+      <td>Sports:</td>
+      <td><%= @item.sport_list %></td>
+    </tr>
+    <% end %>
+    <% unless @item.league_list.empty? %>
+    <tr>
+      <td>Leagues:</td>
+      <td><%= @item.league_list %></td>
+    </tr>
+    <% end %>
+    <% unless @item.team_list.empty? %>
+    <tr>
+      <td>Team:</td>
+      <td><%= @item.team_list %></td>
+    </tr>
+    <% end %>
+    <% unless @item.dated_list.empty? %>
+    <tr>
+      <td>Dated:</td>
+      <td><%= @item.dated_list %></td>
+    </tr>
+    <% end %>
+    <% unless @item.source_list.empty? %>
+    <tr>
+      <td>Source:</td>
+      <td><%= @item.source_list %></td>
+    </tr>
+    <% end %>
+    <% unless @item.designer_list.empty? %>
+    <tr>
+      <td>Designer:</td>
+      <td><%= @item.designer_list %></td>
+    </tr>
+    <% end %>
+    <% unless @item.group_list.empty? %>
+    <tr>
+      <td>Group:</td>
+      <td><%= @item.group_list %></td>
+    </tr>
+    <% end %>
+    <% unless @item.section_list.empty? %>
+    <tr>
+      <td>Section:</td>
+      <td><%= @item.section_list %></td>
+    </tr>
+    <% end %>
+    <% unless @item.manufacture_list.empty? %>
+    <tr>
+      <td>Manufacturer:</td>
+      <td><%= @item.manufacture_list %></td>
+    </tr>
+    <% end %>
+    <% unless @item.number_made_list.empty? %>
+    <tr>
+      <td>Number Made:</td>
+      <td><%= @item.number_made_list %></td>
+    </tr>
+    <% end %>
+    <tr>
+      <td>Tags:</td>
+      <td><%= @item.tag_list %></td>
+    </tr>
+  </tbody>
+</table>
