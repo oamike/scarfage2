@@ -25,15 +25,19 @@ if Item.count == 0
   num = 0
   records.each_with_index do |record, item_index|
     # limit to 10 items
-    break if item_index > 9
+    break if item_index > 19
     item = Item.where(id: record["uid"]).first_or_create!(
       id: record["uid"],
       name: record["name"],
       body: record["body"],
-      description: record["desc"].to_s,
       created_at: record["added"],
       updated_at: record["modified"]
     )
+    record["tags"].each do |tag, i|
+      item.tag_list.add(tag)
+    end
+    item.save
+
     record["images"].each_with_index do |img_id, img_index|
       # puts "Image #{img_id} index #{img_index}"
       name = case img_index

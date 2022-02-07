@@ -26,7 +26,10 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'image_processing', '~> 1.2'
 
 gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'
-#gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
+
+gem 'kaminari' # pagination engine
+# gem 'kaminari-activerecord'
+# gem 'kaminari-actionview'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
