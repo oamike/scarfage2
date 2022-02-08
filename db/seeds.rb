@@ -25,7 +25,7 @@ if Item.count == 0
   num = 0
   records.each_with_index do |record, item_index|
     # limit to 10 items
-    break if item_index > 39
+    break if item_index > 199
     item = Item.where(id: record["uid"]).first_or_create!(
       id: record["uid"],
       name: record["name"],

@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     # kaminari pagination
     # default to page=1, per=25
     # @items = Item.order(created_at: :desc).page(params[:page]).per(8)
-    @items = Item.order(:created_at).page(params[:page]).per(8)
+    @items = Item.order(:created_at).page(params[:page])
   end
 
   # GET /items/1 or /items/1.json
