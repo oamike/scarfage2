@@ -25,7 +25,7 @@ if Item.count == 0
   num = 0
   records.each_with_index do |record, item_index|
     # limit to 10 items
-    break if item_index > 19
+    break if item_index > 39
     item = Item.where(id: record["uid"]).first_or_create!(
       id: record["uid"],
       name: record["name"],
@@ -34,7 +34,7 @@ if Item.count == 0
       updated_at: record["modified"]
     )
     record["tags"].each do |tag, i|
-      item.tag_list.add(tag)
+      item.tag_list.add(tag) unless ["USA", "Dated", ].include?(tag)
     end
     item.save
 
