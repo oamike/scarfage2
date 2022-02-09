@@ -5,30 +5,29 @@
 <table>
   <thead>
     <tr>
-      <th>Item</th>
-      <th>Integer</th>
-      <th>User</th>
-      <th>Integer</th>
-      <th>Name</th>
-      <th>String</th>
-      <th>Status</th>
-      <th colspan="3"></th>
+      <th>Attributes</th>
+      <th>Image</th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= image.item_id %></td>
-        <td><%= image.integer %></td>
-        <td><%= image.user_id %></td>
-        <td><%= image.integer %></td>
-        <td><%= image.name %></td>
-        <td><%= image.string %></td>
-        <td><%= image.status %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <ul>
+            <li>id: <%= image.item_id %></li>
+            <li>user_id: <%= image.user_id %></li>
+            <li>name: <%= image.name %></li>
+            <li>status: <%= image.status %></li>
+          </ul>
+        </td>
+        <td>
+          <p><%= image_render(image.image_url) %></p>
+        </td>
+        <td><%= link_to 'Show', image %>
+          <%= link_to 'Edit', edit_image_path(image) %>
+          <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

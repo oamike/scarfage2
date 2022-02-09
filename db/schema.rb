@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_231824) do
+ActiveRecord::Schema.define(version: 2022_02_09_003007) do
 
   create_table "images", charset: "utf8mb4", force: :cascade do |t|
     t.integer "item_id"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2022_02_04_231824) do
   create_table "items", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "body"
-    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -64,10 +63,10 @@ ActiveRecord::Schema.define(version: 2022_02_04_231824) do
   create_table "user_items", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "item_id"
-    t.integer "own_count"
-    t.boolean "willtrade"
-    t.boolean "want"
-    t.boolean "hidden"
+    t.integer "own_count", default: 0
+    t.boolean "willtrade", default: false
+    t.boolean "want", default: false
+    t.boolean "hidden", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_user_items_on_item_id"

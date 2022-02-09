@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     # kaminari pagination
     # default to page=1, per=25
     # @items = Item.order(created_at: :desc).page(params[:page]).per(8)
-    @items = Item.order(:created_at).page(params[:page])
+    @items = Item.eager_load(:images).order(:created_at).page(params[:page])
   end
 
   # GET /items/1 or /items/1.json
@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = Item.find(params[:id])
+      @item = Item.eager_load(:images).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

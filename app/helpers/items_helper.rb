@@ -1,11 +1,7 @@
 module ItemsHelper
-  def image_render(image_url)
-    image_url ? image_tag(image_url, class: 'scarfimage') : ''
-  end
-
   def item_attributes(item)
     res = ""
-    att = @user_items.where(item_id: item.id).first
+    att = item.user_data
     if att
       res += "own:#{att.own_count} " if att.own_count > 0
       res += "trade " if att.willtrade
@@ -16,7 +12,7 @@ module ItemsHelper
   end
 
   def own_count(item)
-    att = @user_items.where(item_id: item.id).first
+    att = item.user_data
     if att && att.own_count > 0
       "#{att.own_count}"
     else
@@ -25,21 +21,21 @@ module ItemsHelper
   end
 
     def trade(item)
-      att = @user_items.where(item_id: item.id).first
+      att = item.user_data
       if att
         att.willtrade ? "#{att.willtrade}" : nil
       end
     end
 
     def want(item)
-      att = @user_items.where(item_id: item.id).first
+      att = item.user_data
       if att
         att.want ? "#{att.want}" : nil
       end
     end
 
       def hide(item)
-        att = @user_items.where(item_id: item.id).first
+        att = item.user_data
         if att
           att.hidden ? "#{att.hidden}" : nil
         end

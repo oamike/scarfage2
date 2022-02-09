@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   has_many :images
 
+
   acts_as_taggable_on :tags
   acts_as_taggable_on :sport, # soccer, rugby, football, basketball
     :league, # MLS, EPL, SerieA
@@ -13,4 +14,8 @@ class Item < ApplicationRecord
     :manufacture, # SportsScarf,
     :number_made # 50, 100, 300
 
+  def user_data
+    return nil unless User.current
+    UserItem.where(item_id: id, user_id: User.current.id).first
+  end
 end

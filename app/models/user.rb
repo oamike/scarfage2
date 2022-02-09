@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :pub, through: :pub_items, class_name: 'Item', source: :item
   has_many :trade, through: :trade_items, class_name: 'Item', source: :item
 
+  cattr_accessor :current
+  
   def all_items
     user_items + items
   end
