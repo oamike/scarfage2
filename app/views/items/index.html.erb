@@ -11,23 +11,17 @@
         <table>
           <tr>
             <td>
-            <ul class="notification-badges" >
-              <%= link_to item.name, item, {class: "scarf-name"}   %>
-              <% if num_owned = own_count(item) %>
-                <li data-badge=<%= num_owned %> >own</li>
-              <% end %>
-              <% if trade = trade(item) %>
-                <li >trade</li>
-              <% end %>
-              <% if want = want(item) %>
-                <li>want</li>
-              <% end %>
-              <% if hide = hide(item) %>
-                <li>hide</li>
-              <% end %>
-            </ul>
-            </td>
-          </tr>
+              <table>
+                <tr><td>
+                  <span class="scarf-name" >
+                    <%= item.name    %>
+                  </span>
+                </td>
+                <td>
+                  <%= render partial: "user_item", locals: { user_data: item.user_data } %>
+                </td>
+              </tr>
+              </table>
           <tr>
             <td>
               <p><%= image_render(item.images[0]&.image_url) %></p>
@@ -35,16 +29,8 @@
             </td>
           </tr>
       </table>
-
-
-          <% if false %>
-            <td>
-              <p><%= link_to 'Edit', edit_item_path(item) %></p>
-              <p><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-            </td>
-          <% end %>
       </tr>
-    <% end %>
+      <% end %>
   </tbody>
 </table>
 

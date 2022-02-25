@@ -17,15 +17,15 @@ end
 
 
 # clear all when new attriubutes are annotate_rendered_view_with_filenames
-Item.all.destroy_all
-Image.all.destroy_all
-if Item.count == 0
+# Item.all.destroy_all
+# Image.all.destroy_all
+if true #Item.count == 0
   path = File.join(File.dirname(__FILE__), "./seeds/AllScarves.json")
   records = JSON.parse(File.read(path))
   num = 0
   records.each_with_index do |record, item_index|
     # limit to 10 items
-    break if item_index > 199
+    # break if item_index > 199
     item = Item.where(id: record["uid"]).first_or_create!(
       id: record["uid"],
       name: record["name"],
@@ -34,7 +34,7 @@ if Item.count == 0
       updated_at: record["modified"]
     )
     record["tags"].each do |tag, i|
-      item.tag_list.add(tag) unless ["USA", "Dated", ].include?(tag)
+      item.tag_list.add(tag) unless ["USA", "Dated" ].include?(tag)
     end
     item.save
 

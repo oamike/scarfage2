@@ -1,8 +1,12 @@
 json.extract! item, :name, :body, :tag_list, :created_at, :updated_at
-json.url item_url(item, format: :json)
+json.links do
+  json.self do
+    json.href item_url(item, format: :json)
+  end
+end
 json.images item.images do |img|
   json.extract! img, :name, :status
-  json.url img.image_url
+  json.href img.image_url
 end
 
 attr = item.user_data
@@ -10,6 +14,10 @@ attr = item.user_data
     json.user_data do
     json.user User.current.username
     json.extract! attr, :own_count, :willtrade, :want, :hidden
-    json.url user_item_url(attr, format: :json)
+    json.links do
+      json.self do
+        json.href user_item_url(attr, format: :json)
+      end
+    end
   end
 end

@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   has_many :images
 
+  max_paginates_per 100
 
   acts_as_taggable_on :tags
   acts_as_taggable_on :sport, # soccer, rugby, football, basketball

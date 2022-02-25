@@ -2,43 +2,33 @@
 
 <h1><%= link_to "Scarfdom", root_path %></h1>
 
-  <table class="item-header">
-    <tbody>
-    <tr>
-      <td>
-      <ul class="notification-badges" >
-        <span class="scarf-name" >
-          <%= @item.name    %>
-        </span>
-        <% if num_owned = own_count(@item) %>
-          <li data-badge=<%= num_owned %> >own</li>
-        <% end %>
-        <% if trade = trade(@item) %>
-          <li >trade</li>
-        <% end %>
-        <% if want = want(@item) %>
-          <li>want</li>
-        <% end %>
-        <% if hide = hide(@item) %>
-          <li>hide</li>
-        <% end %>
-        <li><%= link_to 'Edit', edit_item_path(@item), {class: "edit-button"} %></li>
-      </ul>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+<table class="item-header">
+  <tbody>
+  <tr>
+    <td>
+      <span class="scarf-name" >
+        <%= @item.name    %>
+      </span>
+    </td>
+    <td>
+      <%= render partial: "user_item", locals: { user_data: @item.user_data } %>
+    </td>
+    <td>
+      <%= link_to 'Edit', edit_item_path(@item), {class: "edit-button"} %>
+    </td>
+  </tr>
+  </tbody>
+</table>
 
-
-  <table>
-    <tbody>
-      <% @item.images.each do |image| %>
-        <tr>
-          <td><%= image_tag(image.image_url, alt: image.name, class: 'scarfimage') %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<table>
+  <tbody>
+    <% @item.images.each do |image| %>
+      <tr>
+        <td><%= image_tag(image.image_url, alt: image.name, class: 'scarfimage') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <p>
   <strong>Description</strong></p>
