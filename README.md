@@ -1,4 +1,4 @@
-# Scarfage2
+# Scarfdom
 
 Table of Contents
 
@@ -15,7 +15,7 @@ Table of Contents
 
 ## Overview
 
-Scarfage2 is a backend API that manages user auth and access control, items (scarves), item tags, and user items collections.
+ is a backend API that manages user auth and access control, items (scarves), item tags, and user items collections.
 
 As the system is being built, this project will also provide rudimentary user interfaces that allow admins and moderators to view and review content.
 
@@ -31,13 +31,13 @@ Requires rails running locally
 
 not yet available
 
-* Server access [https://dev.scarfage2.com](https://dev.scarfage2.com)
+* Server access [https://dev.scarfdom.com](https://dev.scarfdom.com)
 
 #### Production Stack
 
 not yet available
 
-* URL [https://scarfage2.com](https://scarfage2)
+* URL [https://Scarfdom.com](https://scarfdom)
 
 ### Service Details
 
@@ -55,16 +55,16 @@ not yet available
 
 ## Rails Environments
 
-Below is a description of the different rails environments in the Scarfage2 project.  To run in a specific rails environment, prepend your "rails" commands with "RAILS_ENV=env ", where "env" is the environment you intend to use.
+Below is a description of the different rails environments in the Scarfdom project.  To run in a specific rails environment, prepend your "rails" commands with "RAILS_ENV=env ", where "env" is the environment you intend to use.
 
 Examples:
 ```
     $ RAILS_ENV=development rails db:migrate
 ```
 ### development
-The "development" environment is used by developers running their Sacrfage2 web service locally.  Connect to it via https://localhost:3000. This environment uses a local MySQL database.
+The "development" environment is used by developers running their scarfdom web service locally.  Connect to it via https://localhost:3000. This environment uses a local MySQL database.
 ### dev
-The "dev" environment is what we use on our dev stack. This environment is limited to testing updates prior to deployin to production.
+The "dev" environment is what we use on our dev stack. This environment is limited to testing updates prior to deploying to production.
 ### production
 The "production" environment is not yet configured.
 ### test
@@ -74,10 +74,10 @@ The "test" environment is used to run our unit and functional tests (rspec) loca
 
 ## SetUp
 
-These are the steps you need to complete to get Scarfage2 running locally on your development machine. Theses steps assume MacOS, RVM, and MySQL are already set up.
+These are the steps you need to complete to get Scarfdom running locally on your development machine. Theses steps assume MacOS, RVM, and MySQL are already set up.
 
 * clone this repo
-  * cd into scarfage2 folder (ensure rvm creates the scarfage2 gemset)
+  * cd into scarfdom folder (ensure rvm creates the scarfdom gemset)
   * gem install bundler
   * bundle install
   * rails db:setup
@@ -100,9 +100,8 @@ Note: if your local MySQL root password is not 'password', you will need to edit
 
 # Running Tests
 
-Test suite uses Rspec, to runlocallay, type the command 'rspec'
+Test suite uses Rspec, to run locally, type the command 'rspec'
 
 ~~~
 $ rspec
 ~~~
-

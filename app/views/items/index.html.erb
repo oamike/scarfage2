@@ -13,9 +13,7 @@
             <td>
               <table>
                 <tr><td>
-                  <span class="scarf-name" >
-                    <%= item.name    %>
-                  </span>
+                  <%= link_to item.name, item, {class: "scarf-name"}   %>
                 </td>
                 <td>
                   <%= render partial: "user_item", locals: { user_data: item.user_data } %>
